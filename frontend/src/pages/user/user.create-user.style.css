@@ -19,12 +19,20 @@ input{
     padding: 5px;
     border-radius: 5px;
 }
+input:focus{
+    border-color: #1677FF;
+}
 button{
     padding: 5px;
-    border-width: 2px;
-    font-weight: bold;
+    border-radius: 5px;
+    border-color: white;
     font-size: large;
     font-family: Arial;
+    color: white;
+    background-color: #1677FF;
+}
+button:focus{
+    background-color: #0958D9;
 }
 h1{
     font-family: Arial;
