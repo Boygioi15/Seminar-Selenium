@@ -3,7 +3,7 @@ const { Builder, By, Key } = require("selenium-webdriver");
 
 async function runTests() {
   // Load the Excel file
-  const workbook = xlsx.readFile("testcases.xlsx");
+  const workbook = xlsx.readFile("../testcases.xlsx");
   const sheet = workbook.Sheets["Sheet1"];
   const data = xlsx.utils.sheet_to_json(sheet); // Read all data as an array of objects
 
@@ -13,7 +13,6 @@ async function runTests() {
 
   //locate the element
   const nameInput = await driver.findElement(By.id("nameInput"));
-  const emailInput = await driver.findElement(By.id("emailInput"));
   const ageInput = await driver.findElement(By.id("ageInput"));
   const submitButton = await driver.findElement(
     By.css("button[type='submit']")
@@ -32,15 +31,11 @@ async function runTests() {
         //Reset fields
         await nameInput.sendKeys(Key.CONTROL, "a", Key.DELETE);
         await driver.sleep(100);
-        await emailInput.sendKeys(Key.CONTROL, "a", Key.DELETE);
-        await driver.sleep(100);
         await ageInput.sendKeys(Key.CONTROL, "a", Key.DELETE);
         await driver.sleep(300);
 
         // Input data from Excel
         await nameInput.sendKeys(dataRow.Name);
-        await driver.sleep(100);
-        await emailInput.sendKeys(dataRow.Email);
         await driver.sleep(100);
         await ageInput.sendKeys(String(dataRow.Age));
         await driver.sleep(100);
@@ -71,7 +66,7 @@ async function runTests() {
 
     // Save updated Excel file with results
   } finally {
-    await xlsx.writeFile(workbook, "testcases.xlsx");
+    await xlsx.writeFile(workbook, "../testcases.xlsx");
     await driver.quit();
   }
 }

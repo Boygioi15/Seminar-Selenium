@@ -9,8 +9,6 @@ const { Builder, By } = require("selenium-webdriver");
 
     await driver.findElement(By.id("nameInput")).sendKeys("Hello World");
     await driver.sleep(1000);
-    await driver.findElement(By.id("emailInput")).sendKeys("email@example.com");
-    await driver.sleep(1000);
     await driver.findElement(By.id("ageInput")).sendKeys("49");
     await driver.sleep(1000);
     await driver.findElement(By.css("button[type='submit']")).click();
@@ -27,7 +25,6 @@ const { Builder, By } = require("selenium-webdriver");
 
     // Clear inputs before next test
     await driver.findElement(By.id("nameInput")).clear();
-    await driver.findElement(By.id("emailInput")).clear();
     await driver.findElement(By.id("ageInput")).clear();
   } catch (error) {
     console.error("An error occurred:", error);
