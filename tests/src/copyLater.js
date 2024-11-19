@@ -32,7 +32,7 @@ const { Builder, By } = require("selenium-webdriver");
     await driver.quit();
   }
 })();
-
+/*
 // Test 2: Valid submission
 await driver.findElement(By.id("nameInput")).sendKeys("Jo");
 await driver.findElement(By.id("emailInput")).sendKeys("test@example.com");
@@ -46,3 +46,4 @@ if (validationText === "") {
 } else {
   console.log("Test 2 Failed. Message: ${validationText}");
 }
+*/

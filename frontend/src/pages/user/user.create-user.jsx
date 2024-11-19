@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import "./user.create-user.style.css";
-import axios from "axios";
+
+function isOnlyLetters(str) {
+  
+  const regex = /^[a-zA-Z\s]+$/; // Matches only letters (uppercase and lowercase)
+  return regex.test(str);
+}
 
 function CreateUserPage() {
   const [name, setName] = useState("");
@@ -8,8 +13,13 @@ function CreateUserPage() {
   const [validationMessage, setValidationMessage] = useState(""); // New state for validation message
 
   const validateForm = () => {
+    
     if (name==="") {
       setValidationMessage("Can't leave name blank");
+      return false;
+    }
+    if (!isOnlyLetters(name)) {
+      setValidationMessage("Name should only contains letter!");
       return false;
     }
     if (age==="") {
